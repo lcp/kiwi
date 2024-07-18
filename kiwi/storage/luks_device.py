@@ -175,13 +175,13 @@ class LuksDevice(DeviceProvider):
             luks_uuid = self.storage_provider.get_uuid(storage_device)
             if self.luks_keyfile:
                 crypttab.write(
-                    'luks UUID={0} /{1}{2}'.format(
+                    'luks UUID={0} /{1} force{2}'.format(
                         luks_uuid, self.luks_keyfile.lstrip(os.sep), os.linesep
                     )
                 )
             else:
                 crypttab.write(
-                    'luks UUID={0}{1}'.format(
+                    'luks UUID={0} none force{1}'.format(
                         luks_uuid, os.linesep
                     )
                 )
